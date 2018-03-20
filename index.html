@@ -19,7 +19,8 @@
     <div class="friends">
       <form class="form-inline searchForm" role="form">
         <div class="form-group">
-          <input class="form-control" placeholder="Search Anything About Your Friends">
+            <input class="form-control" placeholder="Search Name" ng-model='filters.name'>
+            <input class="form-control" placeholder="Search State" ng-model='filters.state'>
 
           <select class="input-medium">
             <option>Name</option>
@@ -37,7 +38,7 @@
       </form>
 
       <ul>
-        <li class='friend' ng-repeat ='friend in friends'>
+        <li class='friend' ng-repeat ='friend in friends | filter: {name: filters.name, location: {state: filters.state} }'>
           <img class="profile-pic" src='http://placebear.com/50/50.jpg' ng-src='{{friends.pic_square}}'>
           <h3>{{ friend.name }}</h3>
           <div class="location">
@@ -47,7 +48,7 @@
             Status: {{ friend.status }}
           </div>
           <div class="num-friends">
-            Friends: {{ friends.friend_count }}
+            Friends: {{ friend.friend_count }}
           </div>
         </li>
       </ul>
