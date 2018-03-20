@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app ='myApp'>
   <head>
     <title>Angular Friends</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -7,7 +7,13 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
 
-  <body>
+  <body ng-controller="friendCtrl">
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js'></script>
+    <script src='./JS/app.js'></script>
+    <script src='./JS/friendCtrl.js'></script>
+    <div>
+      
+    </div>
     <h1>The <strong>facebook</strong> Friend Machine</h1>
 
     <div class="friends">
@@ -31,17 +37,17 @@
       </form>
 
       <ul>
-        <li class='friend'>
-          <img class="profile-pic" src='http://placebear.com/50/50.jpg'>
-          <h3>Cali Fornia</h3>
+        <li class='friend' ng-repeat ='friend in friends'>
+          <img class="profile-pic" src='http://placebear.com/50/50.jpg' ng-src='{{friends.pic_square}}'>
+          <h3>{{ friend.name }}</h3>
           <div class="location">
-            Location: New Port Beach, California, United States
+            Location: {{ friend.location.city}}, {{ friend.location.state }}, {{ friend.location.country }}
           </div>
           <div class="status">
-            Status: I hate the snow. I wish I was on the beach right now!!!
+            Status: {{ friend.status }}
           </div>
           <div class="num-friends">
-            Friends: 1,367
+            Friends: {{ friends.friend_count }}
           </div>
         </li>
       </ul>
